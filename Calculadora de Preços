@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Preços</title>
+  <style>
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input {
+      padding: 5px;
+      width: 100px;
+    }
+    #total {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Calculadora de Valor Total</h2>
+
+  <label for="preco">Preço (R$):</label>
+  <input type="number" id="preco" step="0.01" min="0">
+
+  <label for="quantidade">Quantidade:</label>
+  <input type="number" id="quantidade" min="0">
+
+  <div id="total">Total: R$ 0.00</div>
+
+  <script>
+    const precoInput = document.getElementById('preco');
+    const quantidadeInput = document.getElementById('quantidade');
+    const totalDiv = document.getElementById('total');
+
+    function calcularTotal() {
+      const preco = parseFloat(precoInput.value) || 0;
+      const quantidade = parseInt(quantidadeInput.value) || 0;
+      const total = preco * quantidade;
+
+      totalDiv.textContent = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+    // Atualiza automaticamente ao mudar os valores
+    precoInput.addEventListener('input', calcularTotal);
+    quantidadeInput.addEventListener('input', calcularTotal);
+  </script>
+</body>
+</html>
