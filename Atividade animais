@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fazenda Quixadá</title>
+</head>
+<body>
+  <h1>Fazenda Quixadá</h1>
+  <button onclick="testarAnimais()">Testar Animais</button>
+  <pre id="saida"></pre>
+
+  <script>
+    // Classe base: Animal
+    class Animal {
+      constructor(som, comida) {
+        this._som = som;
+        this._comida = comida;
+      }
+
+      get som() {
+        return this._som;
+      }
+
+      set som(novoSom) {
+        this._som = novoSom;
+      }
+
+      get comida() {
+        return this._comida;
+      }
+
+      set comida(novaComida) {
+        this._comida = novaComida;
+      }
+
+      emitirSom() {
+        return this._som;
+      }
+
+      comer() {
+        return `Está comendo: ${this._comida}`;
+      }
+    }
+
+    // Gato
+    class Gato extends Animal {
+      constructor(comida = "ração") {
+        super("Miau", comida);
+      }
+    }
+
+    // Cachorro
+    class Cachorro extends Animal {
+      constructor(comida = "osso") {
+        super("Au au", comida);
+      }
+    }
+
+    // Pato
+    class Pato extends Animal {
+      constructor(comida = "milho") {
+        super("Quack", comida);
+      }
+    }
+
+    // Função para testar os objetos
+    function testarAnimais() {
+      const gato = new Gato();
+      const cachorro = new Cachorro();
+      const pato = new Pato();
+
+      let resultado = "";
+
+      resultado += "Gato:\n";
+      resultado += gato.emitirSom() + "\n";
+      resultado += gato.comer() + "\n\n";
+
+      resultado += "Cachorro:\n";
+      resultado += cachorro.emitirSom() + "\n";
+      resultado += cachorro.comer() + "\n\n";
+
+      resultado += "Pato:\n";
+      resultado += pato.emitirSom() + "\n";
+      resultado += pato.comer() + "\n\n";
+
+      // Alterando som e comida do gato
+      gato.som = "Miaaaaau!";
+      gato.comida = "peixe";
+
+      resultado += "Gato (valore alterado):\n";
+      resultado += gato.emitirSom() + "\n";
+      resultado += gato.comer() + "\n";
+
+      // Exibir no HTML
+      document.getElementById("saida").textContent = resultado;
+    }
+  </script>
+</body>
+</html>
