@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Alunos UFC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+
+    .vermelho {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Lista de Alunos</h2>
+  <ul id="listaAlunos">
+    <li>João</li>
+    <li>Maria</li>
+    <li>Pedro</li>
+    <li>Ana</li>
+    <li>Lucas</li>
+    
+  </ul>
+
+  <script>
+    const alunos = document.querySelectorAll('#listaAlunos li');
+
+    alunos.forEach(function(aluno, index) {
+      if (index % 2 === 0) { // posição par (0, 2, 4...)
+        aluno.classList.add('vermelho');
+      }
+    });
+  </script>
+
+</body>
+</html>
